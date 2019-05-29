@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Maya's Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="apple-touch-icon" sizes="57x57" href="favicon 3/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="favicon 3/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="favicon 3/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="favicon 3/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="favicon 3/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="favicon 3/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="favicon 3/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="favicon 3/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon 3/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="favicon 3/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon 3/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon 3/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon 3/favicon-16x16.png">
+    <link rel="manifest" href="favicon 3/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+       .mapOptions{
+         height: 650px;
+         width: 1300px;
+       }
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .container{
+        height: 650px;
+
+      }
+      .btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+/* Green */
+.TelAviv {
+  color: green;
+}
+
+.TelAviv:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Blue */
+.DeadSea {
+  color: dodgerblue;
+}
+
+.DeadSea:hover {
+  background: #2196F3;
+  color: white;
+}
+
+/* Orange */
+.Haifa {
+  color: orange;
+}
+
+.Haifa:hover {
+  background: #ff9800;
+  color: white;
+}
+
+/* Red */
+.Hermon {
+  color: red;
+}
+
+.Hermon:hover {
+  background: #f44336;
+  color: white;
+}
+
+
+    </style>
+  </head>
+  <body>
+    <h1 style="color:#d8043b; text-align:center; margin-top: 20px; font-size:200%; font-family:verdana;">Best Places To Visit in Israel</h1>
+    <div class="row p-5">
+        <div class="col-8">
+          <div id="map" class='mapOptions'></div>
+          </div>
+          <div class="col-1"></div>
+          <div class="col-3">
+    <div class="container" style="border:1px solid black;"><span id="description"></span></div>
+  </div>
+
+  <input class="btn TelAviv" type="button" value="Tel Aviv" onclick="initMap2(32.097187,34.772957,15,' נמל תל אביב הוא מתחם בילוי וקניות עם גישה לים וללא פעילות נמלית.בנמל פועלים למעלה מ-60 עסקים מתחומי האוכל, אופנה, בריאות ותקשורת, אולמות אירועים וכנסים, מועדונים וחנויות');" />
+  <input class="btn DeadSea" type="button" value="DeadSea" onclick="initMap2(31.572130,35.458037,10,'ים המלח הוא אגם מלח חסר מוצא לים, הוא המקום הכי נמוך בעולם והוא אחד משבעת פלאי תבל');" />
+  <input class="btn Haifa" type="button" value="Haifa" onclick="initMap2(32.811407,34.985331,18,'הגנים הבהאים על הר הכרמל שוכנים בליבה של חיפה ובנויים מתשעה עשר גנים מדורגים (טרסות) המשתרעים לכל אורך המדרון הצפוני של הר הכרמל. מקדש הבאב בעל כיפת הזהב, מקום מנוחתו של הנביא-המבשר של הדת הבהאית, ניצב בטרסה המרכזית וצופה אל מפרץ חיפה ועכו.');" />
+  <input class="btn Hermon" type="button" value="Hermon Mount" onclick="initMap2(33.307937,35.772683,13,'הַר חֶרְמוֹן הוא ההר הגבוה ביותר בישראל. בהר ישנם שלל אטרקציות כגון: רכבל,סקי,רכבת הרים,מגלשות ועוד');" />
+
+  <script>
+    var map;
+    var x;
+    var y;
+    var z;
+    var desc;
+    function initMap2(x,y,z,desc) {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: x, lng: y},
+        zoom: z
+      });
+      document.getElementById('description').textContent =desc;
+    }
+    function initMap() {
+      map = new google.maps.Map(document.getElementById('map'), {
+        center: {lat: 31.223, lng: 34.888},
+        zoom: 7.4
+      });
+    }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDkG702RFFEEm08CP87sLK_amm-ru_eUVs&callback=initMap"
+    async defer></script>
+  </body>
+</html>
