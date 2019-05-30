@@ -31,9 +31,10 @@
          width: 1300px;
        }
       html, body {
-        height: 100%;
-        margin: 0;
+        height: 90%;
+        margin: 0px;
         padding: 0;
+        width: 99%;
       }
       .container{
         height: 650px;
@@ -46,6 +47,7 @@
   font-size: 16px;
   cursor: pointer;
   display: inline-block;
+  direction: rtl;
 }
 
 /* Green */
@@ -99,7 +101,7 @@
           </div>
           <div class="col-1"></div>
           <div class="col-3">
-    <div class="container" style="border:1px solid black;"><span id="description"></span></div>
+    <div class="container" style="border:1px solid black; text-align:right;"><span id="description" ></span></div>
   </div>
 
   <input class="btn TelAviv" type="button" value="Tel Aviv" onclick="initMap2(32.097187,34.772957,15,' נמל תל אביב הוא מתחם בילוי וקניות עם גישה לים וללא פעילות נמלית.בנמל פועלים למעלה מ-60 עסקים מתחומי האוכל, אופנה, בריאות ותקשורת, אולמות אירועים וכנסים, מועדונים וחנויות');" />
@@ -118,7 +120,7 @@
         center: {lat: x, lng: y},
         zoom: z
       });
-      document.getElementById('description').textContent =desc;
+      document.getElementById('description').textContent = desc;
     }
     function initMap() {
       map = new google.maps.Map(document.getElementById('map'), {
